@@ -1,5 +1,5 @@
 
-from exnihilo import *
+from exnihilo.lang import *
 
 def test_cardinality():
   with World():
