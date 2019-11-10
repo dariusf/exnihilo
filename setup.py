@@ -11,7 +11,7 @@ with open(os.path.join(here, 'readme.md'), encoding='utf-8') as f:
 setup(
   name='exnihilo',
   version='0.0.1',
-  description='DSL for procedural content generation and worldbuilding',
+  description='Tools for solver-aided worldbuilding',
   long_description=long_description,
   url='http://github.com/dariusf/exnihilo',
   author='Darius Foo',
@@ -25,6 +25,13 @@ setup(
     ]
   },
   install_requires=[
-    'clyngor'
+    'clyngor',
+    'watchdog',
+    'lark-parser',
+    'terminaltables',
+    'randomcolor',
+    'ansicolors',
+    'pandas',
+    'argh'
   ]
 )

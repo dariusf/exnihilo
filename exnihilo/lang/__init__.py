@@ -1,6 +1,10 @@
 
 from collections import namedtuple, OrderedDict
 import builtins
+
+from .. import solve
+
+# TODO get rid of this import
 import clyngor
 
 default_builtins = set(vars(builtins).keys())
@@ -112,7 +116,7 @@ def generate(debug=False):
   if debug:
     print(program)
 
-  # TODO handle unsat
+  # TODO use solve api
   answers = clyngor.ASP(program).careful_parsing
 
   # manual decoding because of API deficiencies
