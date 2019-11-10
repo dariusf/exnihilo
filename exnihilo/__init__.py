@@ -39,17 +39,20 @@ def world():
 
 # TODO https://docs.python.org/3/whatsnew/3.6.html#whatsnew36-pep468
 def thing(_name, **fields):
-  nt = namedtuple(_name, ','.join(fields.keys()))
-  setattr(builtins, _name, nt)
-  nt._fields = fields
+  # A container for ASP output which users would interact with
+  container = namedtuple(_name, fields.keys())
+
+  # TODO this doesn't have to be the named tuple
+  setattr(builtins, _name, container)
+  container._fields = fields
 
   # Adding a method
   # https://stackoverflow.com/a/2982
   # _name = lambda self: self.__name__
-  # nt._name = _name.__get__(nt)
-  nt._name = _name
+  # container._name = _name.__get__(container)
+  container._name = _name
 
-  world().defined_names[_name] = nt
+  world().defined_names[_name] = container
 
 
 def up_to(n, thing):
@@ -103,7 +106,7 @@ def debug_state():
   print('global', global_world, id(global_world))
 
 
-def solve(debug=False):
+def generate(debug=False):
   program = domains_program()
 
   if debug:

@@ -8,7 +8,7 @@ def test_cardinality():
       age=span(1, 3)
     )
     exactly(1, Person)
-    result = solve()
+    result = generate(debug=True)
 
   assert len(result) == 1
   assert result[0].name in ['x', 'y']
