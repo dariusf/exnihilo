@@ -1,7 +1,7 @@
 
 import clyngor
 import itertools
-# import pandas as pd
+import pandas as pd
 from .interruptible import *
 
 program = '''
@@ -15,6 +15,15 @@ c(X) :- b(X).
 
 def fst(x):
   return x[0]
+
+
+def process(answer):
+  return {k: list(list(name_and_args[1]) for name_and_args in v) for k, v in itertools.groupby(sorted(answer, key=fst), key=fst)}
+
+
+def process_df(answer):
+  # TODO map names at this point
+  return {k: pd.DataFrame(name_and_args[1] for name_and_args in v) for k, v in itertools.groupby(sorted(answer, key=fst), key=fst)}
 
 def solve(program):
   # TODO handle unsat
@@ -33,7 +42,7 @@ def solve(program):
   # assumes that there's no overloading by arity
 
   for answer in answers: # nondeterminism
-    yield {k: list(list(name_and_args[1]) for name_and_args in v) for k, v in itertools.groupby(sorted(answer, key=fst), key=fst)}
+    yield process_df(answer)
 
-for a in solve(program):
-  print(a)
+# for a in solve(program):
+  # print(a)
