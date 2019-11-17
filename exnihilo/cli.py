@@ -1,10 +1,11 @@
 
 import sys
 import argh
+import os
 from . import dev
 
-def watch():
-  dev.main()
+def watch(directory='.', recursive=False):
+  dev.main(directory=os.path.abspath(directory), recursive=recursive)
 
 parser = argh.ArghParser()
 parser.add_commands([watch])

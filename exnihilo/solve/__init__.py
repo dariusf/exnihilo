@@ -2,6 +2,7 @@
 import clyngor
 import itertools
 # import pandas as pd
+from .interruptible import *
 
 program = '''
 a.
@@ -36,5 +37,3 @@ def solve(program):
 
 for a in solve(program):
   print(a)
-
-# import pdb; pdb.set_trace()

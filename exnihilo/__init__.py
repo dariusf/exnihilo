@@ -1,2 +1,4 @@
 
-from . import solve
+from .solve import *
+
+__all__ = ['solve']
