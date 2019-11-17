@@ -6,3 +6,4 @@ randomcolor==0.4.4.5
 ansicolors==1.1.8
 pandas==0.25.3
 argh==0.26.2
+graphviz==0.13.2

@@ -25,7 +25,15 @@ def process_df(answer):
   # TODO map names at this point
   return {k: pd.DataFrame(name_and_args[1] for name_and_args in v) for k, v in itertools.groupby(sorted(answer, key=fst), key=fst)}
 
-def solve(program):
+def solve(program=None, file=None):
+  if not program and not file:
+    # lol no sum types
+    raise Exception('provide a program or file')
+
+  if file:
+    with open(file, 'r') as f:
+      program = f.read()
+
   # TODO handle unsat
   # TODO random
   # TODO number of answers
